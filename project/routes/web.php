@@ -11,10 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'DelfiController@index')->name('index');
+
+Route::get('facebook/redirect', 'FacebookController@redirect')->name('facebook-login');
+Route::get('facebook/callback', 'FacebookController@callback')->name('facebook-callback');
+
+Route::get('profile', 'UserController@profile')->name('profile');
+Route::post('profile', 'UserController@update')->name('profile-update');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

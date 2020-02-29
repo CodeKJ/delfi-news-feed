@@ -19,7 +19,9 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('avatar')->default('user.jpg');
+            $table->string('avatar')->nullable();
+            $table->string('default_channel')->default(config('services.delfi.default_channel'));
+            $table->integer('default_paginate')->default(config('services.delfi.default_paginate'));
             $table->rememberToken();
             $table->timestamps();
         });

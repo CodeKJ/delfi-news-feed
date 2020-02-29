@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Intervention\Image\Facades\Image;
 
 class User extends Authenticatable
 {
@@ -36,4 +36,32 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Set user avatar accessor
+     *
+     * @param $value
+     * @return string
+     */
+    public function getAvatarAttribute($value){
+        return $value ? "/storage/uploads/{$value}" : "/img/user.png";
+    }
+
+    /**
+     * Upload, resize and save user avatar
+     *
+     * @param $image
+     */
+    public function uploadAvatar($image){
+        $avatar = md5(time().$this->id).'.png';
+        $destinationPath = public_path('/storage/uploads');
+
+        $img = Image::make($image);
+        $img->resize(64, 64, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save($destinationPath.'/'.$avatar);
+
+        $this->avatar = $avatar;
+        $this->save();
+    }
 }

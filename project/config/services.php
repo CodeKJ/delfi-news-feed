@@ -14,6 +14,40 @@ return [
     |
     */
 
+    /*
+     * Delfi.lv RSS feed data
+     */
+    'delfi' => [
+        'rss' => 'https://www.delfi.lv/rss/?channel=',
+        'default_channel' => 'delfi',
+        'default_paginate' => 10,
+        'channels' => [
+            'delfi'         => 'Visas DELFI jaunākās ziņas',
+            'aculiecinieks' => 'Aculiecinieka ziņas',
+            'auto'          => 'Auto ziņas',
+            'bizness'       => 'Biznesa ziņas',
+            'calis'         => 'CĀLIS.LV ziņas',
+            'izklaide'      => 'Izklaide ziņas',
+            'kultura'       => 'Kultūras ziņas',
+            'laikazinas'    => 'Laika ziņas',
+            'majadarzs'     => 'Dārzs ziņas',
+            'mansdraugs'    => 'Mans draugs ziņas',
+            'orakuls'       => 'Orakuls ziņas',
+            'receptes'      => 'Recepšu ziņas',
+            'skats'         => 'Skats.lv ziņas',
+            'sports'        => 'Sporta ziņas',
+            'tasty'         => 'Tasty ziņas',
+            'tavamaja'      => 'Tava māja ziņas',
+            'turismagids'   => 'Tūrismagids.lv ziņas',
+            'tv'            => 'DELFI TV ziņas',
+            'vina'          => 'Viņa.lv ziņas',
+        ],
+    ],
+
+    /*
+     * Facebook app credentials
+     * https://developers.facebook.com/apps
+     */
     'facebook' => [
         'client_id' => env('FACEBOOK_CLIENT_ID'),
         'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
